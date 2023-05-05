@@ -1,0 +1,70 @@
+//
+//  DevHub Messenger Widget Utils
+//  ___________________________________________
+
+//
+//  Variables
+//  -------------------------------------------
+
+@messenger-position__offset__level-1: 0;
+@messenger-position__offset__level-2: 8px;
+@messenger-position__offset__level-3: 30px;
+@messenger-position__offset__level-4: 52px;
+@messenger-position__offset__level-5: 60px;
+
+//
+//  Mixins
+//  -------------------------------------------
+
+.generate-icons-positions(@n, @i: 2) when (@i =< @n) {
+    &:nth-child(@{i}) {
+        top: (-30px - @messenger-animation__drop-line__position-step * (@i - 1));
+        transition: scale @messenger-animation__drop-line__base-duration, top (@messenger-animation__drop-line__base-duration + @messenger-animation__drop-line__duration-step * (@i - 1));
+    }
+
+    .generate-icons-positions(@n, (@i + 1));
+}
+
+//
+//  Circle Positions
+//  -------------------------------------------
+
+.-deg0 {
+    top: @messenger-position__offset__level-3;
+    left: @messenger-position__offset__level-1;
+}
+
+.-deg45 {
+    top: @messenger-position__offset__level-2;
+    left: @messenger-position__offset__level-2;
+}
+
+.-deg90 {
+    top: @messenger-position__offset__level-1;
+    left: @messenger-position__offset__level-3;
+}
+
+.-deg135 {
+    top: @messenger-position__offset__level-2;
+    left: @messenger-position__offset__level-4;
+}
+
+.-deg180 {
+    top: @messenger-position__offset__level-3;
+    left: @messenger-position__offset__level-5;
+}
+
+.-deg225 {
+    top: @messenger-position__offset__level-4;
+    left: @messenger-position__offset__level-4;
+}
+
+.-deg270 {
+    top: @messenger-position__offset__level-5;
+    left: @messenger-position__offset__level-3;
+}
+
+.-deg315 {
+    top: @messenger-position__offset__level-4;
+    left: @messenger-position__offset__level-2;
+}

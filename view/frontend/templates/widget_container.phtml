@@ -1,0 +1,18 @@
+<?php
+/** @var $block \DevHub\MessengerWidget\Block\Messenger\Widget */
+
+if ($block->isShowMessengers()): ?>
+    <div data-bind="scope: 'messenger-widget'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */$block->getJsLayout(); ?>
+        }
+    }
+
+    </script>
+<?php endif; ?>
+

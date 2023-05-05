@@ -1,0 +1,121 @@
+//
+//  DevHub Messenger Widget Privacy Policy Popup
+//  ___________________________________________
+
+//
+//  Variables
+//  -------------------------------------------
+
+@messenger-privacy-policy__main__color: #5384ec;
+@messenger-privacy-policy-popup__desktop__width: 700px;
+
+//
+//  Common
+//  -------------------------------------------
+
+& when (@media-common = true) {
+    .messenger-privacy-policy {
+        & {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .messenger-popup {
+            z-index: 1;
+            box-sizing: border-box;
+            padding: 30px;
+            width: 90%;
+            border-radius: 8px;
+            background: @color-white;
+            box-shadow: 0 -2px 18px rgba(0, 0, 0, .06);
+        }
+
+        .messenger-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: @color-white;
+            opacity: .6;
+        }
+
+        .messenger-title {
+            margin: 0 0 15px;
+            color: @messenger-privacy-policy__main__color;
+            font-size: 30px;
+        }
+
+        .messenger-content {
+            overflow: auto;
+            margin-bottom: 30px;
+            max-height: 45vh;
+        }
+
+        .messenger-actions {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .messenger-button {
+            & {
+                padding: 10px 20px;
+                border: none;
+                background: @color-white;
+                color: @messenger-privacy-policy__main__color;
+                text-transform: uppercase;
+                letter-spacing: 1.35px;
+                font-weight: @font-weight__bold;
+            }
+
+            &:active {
+                box-shadow: none;
+            }
+        }
+
+        .messenger-button.-accept {
+            & {
+                margin-bottom: 15px;
+                background: @messenger-privacy-policy__main__color;
+                color: @color-white;
+            }
+
+            &:hover {
+                background: lighten(@messenger-privacy-policy__main__color, 10%);
+            }
+        }
+    }
+}
+
+//
+// Tablet +
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .messenger-privacy-policy {
+        .messenger-popup {
+            width: @messenger-privacy-policy-popup__desktop__width;
+        }
+
+        .messenger-actions {
+            flex-direction: row;
+        }
+
+        .messenger-button.-accept {
+            order: 1;
+            margin: 0;
+        }
+
+        .messenger-button.-reject {
+            order: 0;
+            margin-right: 15px;
+        }
+    }
+}

@@ -1,0 +1,275 @@
+//
+//  DevHub Messenger Widget Positions
+//  ___________________________________________
+
+//
+//  Variables
+//  -------------------------------------------
+
+@messenger-widget__offset: 25px;
+@messenger-widget__center__offset: @messenger-widget__size / 2;
+@messenger-scale-correction: (@messenger-messenger-icon__size * @messenger-messenger-icon__opened__scale - @messenger-messenger-icon__size) / 2;
+
+// 4+ messengers
+@messenger-position__4-5__opened__offset__level-1: -47px - @messenger-scale-correction;
+@messenger-position__4-5__opened__offset__level-2: -43px - @messenger-scale-correction;
+@messenger-position__4-5__opened__offset__level-3: -28px - @messenger-scale-correction;
+@messenger-position__4-5__opened__offset__level-4: 17px - @messenger-scale-correction;
+@messenger-position__4-5__opened__offset__level-5: 65px - @messenger-scale-correction;
+
+// 2-3 messengers
+@messenger-position__2-3__opened__offset__level-1: -31px - @messenger-scale-correction;
+@messenger-position__2-3__opened__offset__level-2: -15px - @messenger-scale-correction;
+@messenger-position__2-3__opened__offset__level-3: 45px - @messenger-scale-correction;
+
+@messenger-animation__drop-line__base-duration: .03s;
+@messenger-animation__drop-line__duration-step: .01s;
+@messenger-animation__drop-line__position-step: @messenger-messenger-icon__size * @messenger-messenger-icon__opened__scale + 10px;
+
+//
+//  Common
+//  -------------------------------------------
+
+& when (@media-common = true) {
+    .messenger-widget-container {
+        &.-top {
+            top: @messenger-widget__offset;
+        }
+
+        &.-center {
+            top: ~'calc(50% - @{messenger-widget__size} / 2)';
+        }
+
+        &.-bottom {
+            bottom: @messenger-widget__offset;
+        }
+
+        &.-left {
+            left: @messenger-widget__offset;
+        }
+
+        &.-right {
+            right: @messenger-widget__offset;
+        }
+    }
+
+    .messenger-widget-component:not(.-drop-line.-opened) .messenger-messengers-container {
+        .messenger-widget-container.-center.-left &,
+        .messenger-widget-container.-top.-left &,
+        .messenger-widget-container.-bottom.-left & {
+            &,
+            .messenger-item {
+                transform: scale(-1, 1);
+            }
+        }
+    }
+
+    .messenger-widget-component.-opened.-drop-circle .messenger-messengers-container {
+        .messenger-widget-container.-top.-left &,
+        .messenger-widget-container.-bottom.-left & {
+            .messenger-item {
+                transform: scale(@messenger-messenger-icon__opened__scale * -1, @messenger-messenger-icon__opened__scale);
+            }
+
+            .messenger-item:hover {
+                transform: scale(@messenger-messenger-icon__opened__scale * -1.25, @messenger-messenger-icon__opened__scale * 1.25);
+            }
+        }
+    }
+
+    // Messengers Count: 2-3
+    .messenger-widget-component.-items-2 .messenger-messengers-container,
+    .messenger-widget-component.-items-3 .messenger-messengers-container {
+        .messenger-widget-container & .messenger-item {
+            &:nth-child(1) {
+                &:extend(.-deg90);
+            }
+
+            &:nth-child(2) {
+                &:extend(.-deg45);
+            }
+
+            &:nth-child(3) {
+                &:extend(.-deg0);
+            }
+        }
+    }
+
+    .messenger-widget-component.-opened.-drop-circle.-items-2 .messenger-messengers-container,
+    .messenger-widget-component.-opened.-drop-circle.-items-3 .messenger-messengers-container {
+        .messenger-widget-container & .messenger-item {
+            &:nth-child(1) {
+                top: @messenger-position__2-3__opened__offset__level-1;
+                left: @messenger-position__2-3__opened__offset__level-3;
+            }
+
+            &:nth-child(2) {
+                top: @messenger-position__2-3__opened__offset__level-2;
+                left: @messenger-position__2-3__opened__offset__level-2;
+            }
+
+            &:nth-child(3) {
+                top: @messenger-position__2-3__opened__offset__level-3;
+                left: @messenger-position__2-3__opened__offset__level-1;
+            }
+        }
+    }
+    // (END) Messengers Count: 2-3
+
+    // Messengers Count: 4+
+    .messenger-widget-component.-items-4 .messenger-messengers-container,
+    .messenger-widget-component.-items-5 .messenger-messengers-container {
+        .messenger-item {
+            &:nth-child(1) {
+                &:extend(.-deg135);
+            }
+
+            &:nth-child(2) {
+                &:extend(.-deg90);
+            }
+
+            &:nth-child(3) {
+                &:extend(.-deg45);
+            }
+
+            &:nth-child(4) {
+                &:extend(.-deg0);
+            }
+
+            &:nth-child(5) {
+                &:extend(.-deg315);
+            }
+        }
+    }
+
+    .messenger-widget-component.-opened.-drop-circle.-items-4 .messenger-messengers-container,
+    .messenger-widget-component.-opened.-drop-circle.-items-5 .messenger-messengers-container {
+        .messenger-item {
+            &:nth-child(1) {
+                top: @messenger-position__4-5__opened__offset__level-2;
+                left: @messenger-position__4-5__opened__offset__level-5;
+            }
+
+            &:nth-child(2) {
+                top: @messenger-position__4-5__opened__offset__level-1;
+                left: @messenger-position__4-5__opened__offset__level-4;
+            }
+
+            &:nth-child(3) {
+                top: @messenger-position__4-5__opened__offset__level-3;
+                left: @messenger-position__4-5__opened__offset__level-3;
+            }
+
+            &:nth-child(4) {
+                top: @messenger-position__4-5__opened__offset__level-4;
+                left: @messenger-position__4-5__opened__offset__level-1;
+            }
+
+            &:nth-child(5) {
+                top: @messenger-position__4-5__opened__offset__level-5;
+                left: @messenger-position__4-5__opened__offset__level-2;
+            }
+        }
+    }
+    // (END) Messengers Count: 4+
+
+    // Drop Line Opened
+    .messenger-widget-component.-opened.-drop-line .messenger-messengers-container {
+        .messenger-item {
+            left: 50% !important;
+            transform: translateX(-50%) scale(@messenger-messenger-icon__opened__scale);
+        }
+
+        .messenger-item:hover {
+            transform: translateX(-50%) scale(@messenger-messenger-icon__opened__scale * 1.25);
+        }
+
+        .messenger-widget-container & .messenger-item {
+            &:nth-child(1) {
+                top: -30px;
+            }
+
+            .generate-icons-positions(19);
+        }
+    }
+    // (END) Drop Line Opened
+}
+
+//
+// Mobile
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .messenger-widget-container {
+        &.-top,
+        &.-center {
+            top: unset;
+            bottom: @messenger-widget__offset;
+            transform: none;
+        }
+    }
+}
+
+//
+// Tablet +
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .messenger-widget-component:not(.-drop-line.-opened) .messenger-messengers-container {
+        .messenger-widget-container.-center.-right &,
+        .messenger-widget-container.-top.-right & {
+            &,
+            .messenger-item {
+                transform: scale(1, -1);
+            }
+        }
+
+        .messenger-widget-container.-center.-left &,
+        .messenger-widget-container.-top.-left & {
+            &,
+            .messenger-item {
+                transform: scale(-1);
+            }
+        }
+    }
+
+    .messenger-widget-component.-opened.-drop-circle .messenger-messengers-container {
+        .messenger-widget-container.-top.-right & {
+            .messenger-item {
+                transform: scale(@messenger-messenger-icon__opened__scale, @messenger-messenger-icon__opened__scale * -1);
+            }
+
+            .messenger-item:hover {
+                transform: scale(@messenger-messenger-icon__opened__scale * 1.25, @messenger-messenger-icon__opened__scale * -1.25);
+            }
+        }
+
+        .messenger-widget-container.-top.-left & {
+            .messenger-item {
+                transform: scale(@messenger-messenger-icon__opened__scale * -1);
+            }
+
+            .messenger-item:hover {
+                transform: scale(@messenger-messenger-icon__opened__scale * -1.25);
+            }
+        }
+    }
+
+    .messenger-widget-component.-opened.-drop-line .messenger-messengers-container {
+        .messenger-widget-container.-top &,
+        .messenger-widget-container.-center & {
+            transform: scale(1, -1);
+        }
+
+        .messenger-widget-container.-top & .messenger-item,
+        .messenger-widget-container.-center & .messenger-item {
+            & {
+                transform: translateX(-50%) scale(@messenger-messenger-icon__opened__scale, @messenger-messenger-icon__opened__scale * -1);
+            }
+
+            &:hover {
+                transform: translateX(-50%) scale(@messenger-messenger-icon__opened__scale * 1.25, @messenger-messenger-icon__opened__scale * 1.25 * -1);
+            }
+        }
+    }
+}

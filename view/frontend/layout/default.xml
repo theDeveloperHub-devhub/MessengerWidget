@@ -1,0 +1,29 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+            <block class="DevHub\MessengerWidget\Block\Messenger\Widget"
+                   name="messengers.container"
+                   template="DevHub_MessengerWidget::widget_container.phtml"
+                   after="-">
+                <arguments>
+                     <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="messenger-widget" xsi:type="array">
+                                <item name="component" xsi:type="string">DevHub_MessengerWidget/js/view/messenger-widget</item>
+                                <item name="template" xsi:type="string">DevHub_MessengerWidget/messenger-widget</item>
+                                <item name="children" xsi:type="array">
+                                    <item name="messenger-privacy-policy" xsi:type="array">
+                                        <item name="component" xsi:type="string">DevHub_MessengerWidget/js/view/privacy-policy</item>
+                                        <item name="template" xsi:type="string">DevHub_MessengerWidget/privacy-policy</item>
+                                        <item name="children" xsi:type="array">
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
