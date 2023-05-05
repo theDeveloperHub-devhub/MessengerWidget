@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <messenger_widget>
+            <general>
+                <widget_position>bottom_right</widget_position>
+                <whitelist_tags>a,b,br,em,i,li,ol,p,strong,sub,sup,ul</whitelist_tags>
+            </general>
+        </messenger_widget>
+    </default>
+</config>

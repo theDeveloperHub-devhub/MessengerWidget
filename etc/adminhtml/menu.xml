@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="DevHub_MessengerWidget::messenger_manage" title="Messengers" translate="title" module="DevHub_MessengerWidget" sortOrder="100"
+             parent="Magento_Backend::marketing_communications" action="messengerwidget/messenger" resource="DevHub_MessengerWidget::messenger_manage"/>
+    </menu>
+</config>

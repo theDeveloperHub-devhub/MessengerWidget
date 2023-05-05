@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:developerhub:module:DevHub_MessengerWidget:etc/less_to_css.xsd">
+    <module name="DevHub_Checkout">
+        <handle name="default" />
+        <cssOptions fileName="messenger" path="css/source/mkcss" />
+        <ifconfig>messenger_widget/general/is_enabled</ifconfig>
+    </module>
+</config>

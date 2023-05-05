@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="devhub_messenget_widget_messenger_delete_after">
+        <observer name="devhub_messenget_widget_delete_icons" instance="DevHub\MessengerWidget\Observer\Admin\Messenger\Delete" />
+    </event>
+</config>
